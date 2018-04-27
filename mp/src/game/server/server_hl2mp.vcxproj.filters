@@ -1826,6 +1826,9 @@
     <ClInclude Include="toolframework_server.h">
       <Filter>Tools Framework</Filter>
     </ClInclude>
+    <ClInclude Include="grenade_pipebomb.h">
+      <Filter>Source Files\HL2 DLL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gamedll_replay.cpp">
@@ -3313,6 +3316,9 @@
     <ClCompile Include="..\..\game\shared\hl2mp\weapon_crossbow.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\shared\hl2mp\weapon_crowbar.cpp">
+      <Filter>Source Files\HL2MP\Weapons</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\game\shared\hl2mp\weapon_frag.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
@@ -3553,14 +3559,11 @@
     <ClCompile Include="toolframework_server.cpp">
       <Filter>Tools Framework</Filter>
     </ClCompile>
-    <ClCompile Include="hl2\weapon_glock18.cpp">
+    <ClCompile Include="weapon_pipebomb.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="weapon_beretta.cpp">
-      <Filter>Source Files\HL2MP\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="weapon_glock17.cpp">
-      <Filter>Source Files\HL2MP\Weapons</Filter>
+    <ClCompile Include="grenade_pipebomb.cpp">
+      <Filter>Source Files\HL2 DLL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -24,24 +24,18 @@ STUB_WEAPON_CLASS( weapon_alyxgun, WeaponAlyxGun, C_HLSelectFireMachineGun );
 STUB_WEAPON_CLASS( weapon_citizenpackage, WeaponCitizenPackage, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_citizensuitcase, WeaponCitizenSuitcase, C_WeaponCitizenPackage );
 
-
 #ifndef HL2MP
 STUB_WEAPON_CLASS( weapon_ar2, WeaponAR2, C_HLMachineGun );
-STUB_WEAPON_CLASS(weapon_gren, WeaponGren, C_BaseHLCombatWeapon);
 STUB_WEAPON_CLASS( weapon_frag, WeaponFrag, C_BaseHLCombatWeapon );
-//STUB_WEAPON_CLASS( weapon_flashbang, Weaponflashbang, C_BaseHLCombatWeapon );
+STUB_WEAPON_CLASS( weapon_pipebomb, Weaponpipebomb, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_rpg, WeaponRPG, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_pistol, WeaponPistol, C_BaseHLCombatWeapon );
-STUB_WEAPON_CLASS( weapon_glock18, WeaponGlock18, C_BaseHLCombatWeapon ); 
-STUB_WEAPON_CLASS( weapon_glock17, WeaponGlock17, C_BaseHLCombatWeapon ); 
-STUB_WEAPON_CLASS( weapon_beretta, WeaponBeretta, C_BaseHLCombatWeapon ); 
 STUB_WEAPON_CLASS( weapon_shotgun, WeaponShotgun, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_smg1, WeaponSMG1, C_HLSelectFireMachineGun );
 STUB_WEAPON_CLASS( weapon_357, Weapon357, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_crossbow, WeaponCrossbow, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_slam, Weapon_SLAM, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_crowbar, WeaponCrowbar, C_BaseHLBludgeonWeapon );
-//STUB_WEAPON_CLASS( weapon_hatchet, WeaponHatchet, C_BaseHLBludgeonWeapon );
 #ifdef HL2_EPISODIC
 STUB_WEAPON_CLASS( weapon_hopwire, WeaponHopwire, C_BaseHLCombatWeapon );
 //STUB_WEAPON_CLASS( weapon_proto1, WeaponProto1, C_BaseHLCombatWeapon );
