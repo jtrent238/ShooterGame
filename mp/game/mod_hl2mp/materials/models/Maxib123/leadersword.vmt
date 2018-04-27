@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/Maxib123/leadersword"
+	"$bumpmap" "models/Maxib123/leadersword_n"
+}

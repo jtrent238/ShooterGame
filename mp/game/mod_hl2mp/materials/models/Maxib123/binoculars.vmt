@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/Maxib123/binoculars"
+	"$bumpmap" "models/Maxib123/binoculars_n"
+}

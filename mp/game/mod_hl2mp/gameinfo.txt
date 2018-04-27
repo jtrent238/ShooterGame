@@ -1,9 +1,14 @@
 "GameInfo"
 {
-	game	"Shooter Game"
-	title	"SHOOTER+GAME"
-	title2	"By: jtrent238"
-	type multiplayer_only
+	game	             "ShooterGame"
+    name                 "Shooter Game"
+    title                ""
+    title2               ""
+	type                 multiplayer_only
+	developer            "jtrent238"
+	developer_url	     "http://www.brainbread2.eu"
+	manual   	         "http://wiki.brainbread2.eu"
+	icon	             "resource/game"
 	nomodels 0
 	nohimodel 1
 	nocrosshair 1
@@ -69,6 +74,15 @@
 			game				|all_source_engine_paths|hl2/hl2_misc.vpk
 			platform			|all_source_engine_paths|platform/platform_misc.vpk
 
+			// Base Content
+			game				|gameinfo_path|../base/base_content_textures.vpk
+			game				|gameinfo_path|../base/base_content_misc.vpk
+			game				|gameinfo_path|../base/base_content_l4d2_textures.vpk
+			game				|gameinfo_path|../base/base_content_l4d2.vpk			
+			game				|gameinfo_path|../base/hl2_textures.vpk
+			game				|gameinfo_path|../base/hl2_sound_misc.vpk
+			game				|gameinfo_path|../base/hl2_misc.vpk
+			
 			// Add the HL2 directory as a game search path.  This is also where where writes
 			// to the "game" path go.
 			game+game_write		hl2mp
