@@ -14,7 +14,7 @@
 #else
 #include "hl2mp_player.h"
 #include "te_effect_dispatch.h"
-#include "grenade_frag.h"
+#include "grenade_flashbang.h"
 #endif
 
 #include "weapon_ar2.h"
@@ -35,21 +35,21 @@
 #define GRENADE_DAMAGE_RADIUS 250.0f
 
 #ifdef CLIENT_DLL
-#define C_WeaponFlashBang C_WeaponFlashBang
+#define CWeaponflashbang C_Weaponflashbang
 #endif
 
 //-----------------------------------------------------------------------------
-// Fragmentation grenades
+// flashbangmentation grenades
 //-----------------------------------------------------------------------------
-class C_WeaponFlashBang : public CBaseHL2MPCombatWeapon
+class CWeaponflashbang : public CBaseHL2MPCombatWeapon
 {
-	DECLARE_CLASS(C_WeaponFlashBang, CBaseHL2MPCombatWeapon);
+	DECLARE_CLASS(CWeaponflashbang, CBaseHL2MPCombatWeapon);
 public:
 
 	DECLARE_NETWORKCLASS();
 	DECLARE_PREDICTABLE();
 
-	C_WeaponFlashBang();
+	CWeaponflashbang();
 
 	void	Precache(void);
 	void	PrimaryAttack(void);
@@ -81,7 +81,7 @@ private:
 	CNetworkVar(int, m_AttackPaused);
 	CNetworkVar(bool, m_fDrawbackFinished);
 
-	C_WeaponFlashBang(const C_WeaponFlashBang &);
+	CWeaponflashbang(const CWeaponflashbang &);
 
 #ifndef CLIENT_DLL
 	DECLARE_ACTTABLE();
@@ -90,7 +90,7 @@ private:
 
 #ifndef CLIENT_DLL
 
-acttable_t	C_WeaponFlashBang::m_acttable[] =
+acttable_t	CWeaponflashbang::m_acttable[] =
 {
 	{ ACT_HL2MP_IDLE, ACT_HL2MP_IDLE_GRENADE, false },
 	{ ACT_HL2MP_RUN, ACT_HL2MP_RUN_GRENADE, false },
@@ -101,13 +101,13 @@ acttable_t	C_WeaponFlashBang::m_acttable[] =
 	{ ACT_HL2MP_JUMP, ACT_HL2MP_JUMP_GRENADE, false },
 };
 
-IMPLEMENT_ACTTABLE(C_WeaponFlashBang);
+IMPLEMENT_ACTTABLE(CWeaponflashbang);
 
 #endif
 
-IMPLEMENT_NETWORKCLASS_ALIASED(WeaponFrag, DT_WeaponFrag)
+IMPLEMENT_NETWORKCLASS_ALIASED(Weaponflashbang, DT_Weaponflashbang)
 
-BEGIN_NETWORK_TABLE(C_WeaponFlashBang, DT_WeaponFrag)
+BEGIN_NETWORK_TABLE(CWeaponflashbang, DT_Weaponflashbang)
 
 #ifdef CLIENT_DLL
 RecvPropBool(RECVINFO(m_bRedraw)),
@@ -122,17 +122,17 @@ SendPropInt(SENDINFO(m_AttackPaused)),
 END_NETWORK_TABLE()
 
 #ifdef CLIENT_DLL
-BEGIN_PREDICTION_DATA(C_WeaponFlashBang)
+BEGIN_PREDICTION_DATA(CWeaponflashbang)
 DEFINE_PRED_FIELD(m_bRedraw, FIELD_BOOLEAN, FTYPEDESC_INSENDTABLE),
 DEFINE_PRED_FIELD(m_fDrawbackFinished, FIELD_BOOLEAN, FTYPEDESC_INSENDTABLE),
 DEFINE_PRED_FIELD(m_AttackPaused, FIELD_INTEGER, FTYPEDESC_INSENDTABLE),
 END_PREDICTION_DATA()
 #endif
 
-LINK_ENTITY_TO_CLASS(weapon_flashbang, C_WeaponFlashBang);
+LINK_ENTITY_TO_CLASS(weapon_flashbang, CWeaponflashbang);
 PRECACHE_WEAPON_REGISTER(weapon_flashbang);
 
-C_WeaponFlashBang::C_WeaponFlashBang(void) :
+CWeaponflashbang::CWeaponflashbang(void) :
 CBaseHL2MPCombatWeapon()
 {
 	m_bRedraw = false;
@@ -141,16 +141,16 @@ CBaseHL2MPCombatWeapon()
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::Precache(void)
+void CWeaponflashbang::Precache(void)
 {
 	BaseClass::Precache();
 
 #ifndef CLIENT_DLL
-	UTIL_PrecacheOther("npc_grenade_frag");
+	UTIL_PrecacheOther("npc_grenade_flashbang");
 #endif
 
-	PrecacheScriptSound("WeaponFrag.Throw");
-	PrecacheScriptSound("WeaponFrag.Roll");
+	PrecacheScriptSound("Weaponflashbang.Throw");
+	PrecacheScriptSound("Weaponflashbang.Roll");
 }
 
 #ifndef CLIENT_DLL
@@ -159,7 +159,7 @@ void C_WeaponFlashBang::Precache(void)
 // Input  : *pEvent - 
 //			*pOperator - 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::Operator_HandleAnimEvent(animevent_t *pEvent, CBaseCombatCharacter *pOperator)
+void CWeaponflashbang::Operator_HandleAnimEvent(animevent_t *pEvent, CBaseCombatCharacter *pOperator)
 {
 	CBasePlayer *pOwner = ToBasePlayer(GetOwner());
 	bool fThrewGrenade = false;
@@ -207,7 +207,7 @@ void C_WeaponFlashBang::Operator_HandleAnimEvent(animevent_t *pEvent, CBaseComba
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-bool C_WeaponFlashBang::Deploy(void)
+bool CWeaponflashbang::Deploy(void)
 {
 	m_bRedraw = false;
 	m_fDrawbackFinished = false;
@@ -219,7 +219,7 @@ bool C_WeaponFlashBang::Deploy(void)
 // Purpose: 
 // Output : Returns true on success, false on failure.
 //-----------------------------------------------------------------------------
-bool C_WeaponFlashBang::Holster(CBaseCombatWeapon *pSwitchingTo)
+bool CWeaponflashbang::Holster(CBaseCombatWeapon *pSwitchingTo)
 {
 	m_bRedraw = false;
 	m_fDrawbackFinished = false;
@@ -231,7 +231,7 @@ bool C_WeaponFlashBang::Holster(CBaseCombatWeapon *pSwitchingTo)
 // Purpose: 
 // Output : Returns true on success, false on failure.
 //-----------------------------------------------------------------------------
-bool C_WeaponFlashBang::Reload(void)
+bool CWeaponflashbang::Reload(void)
 {
 	if (!HasPrimaryAmmo())
 		return false;
@@ -256,7 +256,7 @@ bool C_WeaponFlashBang::Reload(void)
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::SecondaryAttack(void)
+void CWeaponflashbang::SecondaryAttack(void)
 {
 	if (m_bRedraw)
 		return;
@@ -292,7 +292,7 @@ void C_WeaponFlashBang::SecondaryAttack(void)
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::PrimaryAttack(void)
+void CWeaponflashbang::PrimaryAttack(void)
 {
 	if (m_bRedraw)
 		return;
@@ -329,7 +329,7 @@ void C_WeaponFlashBang::PrimaryAttack(void)
 // Purpose: 
 // Input  : *pOwner - 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::DecrementAmmo(CBaseCombatCharacter *pOwner)
+void CWeaponflashbang::DecrementAmmo(CBaseCombatCharacter *pOwner)
 {
 	pOwner->RemoveAmmo(1, m_iPrimaryAmmoType);
 }
@@ -337,7 +337,7 @@ void C_WeaponFlashBang::DecrementAmmo(CBaseCombatCharacter *pOwner)
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::ItemPostFrame(void)
+void CWeaponflashbang::ItemPostFrame(void)
 {
 	if (m_fDrawbackFinished)
 	{
@@ -392,7 +392,7 @@ void C_WeaponFlashBang::ItemPostFrame(void)
 }
 
 // check a throw from vecSrc.  If not valid, move the position back along the line to vecEye
-void C_WeaponFlashBang::CheckThrowPosition(CBasePlayer *pPlayer, const Vector &vecEye, Vector &vecSrc)
+void CWeaponflashbang::CheckThrowPosition(CBasePlayer *pPlayer, const Vector &vecEye, Vector &vecSrc)
 {
 	trace_t tr;
 
@@ -405,14 +405,14 @@ void C_WeaponFlashBang::CheckThrowPosition(CBasePlayer *pPlayer, const Vector &v
 	}
 }
 
-void DropPrimedFragGrenade(CHL2MP_Player *pPlayer, CBaseCombatWeapon *pGrenade)
+void DropPrimedflashbangGrenade(CHL2MP_Player *pPlayer, CBaseCombatWeapon *pGrenade)
 {
-	C_WeaponFlashBang *pWeaponFrag = dynamic_cast<C_WeaponFlashBang*>(pGrenade);
+	CWeaponflashbang *pWeaponflashbang = dynamic_cast<CWeaponflashbang*>(pGrenade);
 
-	if (pWeaponFrag)
+	if (pWeaponflashbang)
 	{
-		pWeaponFrag->ThrowGrenade(pPlayer);
-		pWeaponFrag->DecrementAmmo(pPlayer);
+		pWeaponflashbang->ThrowGrenade(pPlayer);
+		pWeaponflashbang->DecrementAmmo(pPlayer);
 	}
 }
 
@@ -420,7 +420,7 @@ void DropPrimedFragGrenade(CHL2MP_Player *pPlayer, CBaseCombatWeapon *pGrenade)
 // Purpose: 
 // Input  : *pPlayer - 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::ThrowGrenade(CBasePlayer *pPlayer)
+void CWeaponflashbang::ThrowGrenade(CBasePlayer *pPlayer)
 {
 #ifndef CLIENT_DLL
 	Vector	vecEye = pPlayer->EyePosition();
@@ -435,7 +435,7 @@ void C_WeaponFlashBang::ThrowGrenade(CBasePlayer *pPlayer)
 	Vector vecThrow;
 	pPlayer->GetVelocity(&vecThrow, NULL);
 	vecThrow += vForward * 1200;
-	CBaseGrenade *pGrenade = Fraggrenade_Create(vecSrc, vec3_angle, vecThrow, AngularImpulse(600, random->RandomInt(-1200, 1200), 0), pPlayer, GRENADE_TIMER, false);
+	CBaseGrenade *pGrenade = flashbanggrenade_Create(vecSrc, vec3_angle, vecThrow, AngularImpulse(600, random->RandomInt(-1200, 1200), 0), pPlayer, GRENADE_TIMER, false);
 
 	if (pGrenade)
 	{
@@ -467,7 +467,7 @@ void C_WeaponFlashBang::ThrowGrenade(CBasePlayer *pPlayer)
 // Purpose: 
 // Input  : *pPlayer - 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::LobGrenade(CBasePlayer *pPlayer)
+void CWeaponflashbang::LobGrenade(CBasePlayer *pPlayer)
 {
 #ifndef CLIENT_DLL
 	Vector	vecEye = pPlayer->EyePosition();
@@ -480,7 +480,7 @@ void C_WeaponFlashBang::LobGrenade(CBasePlayer *pPlayer)
 	Vector vecThrow;
 	pPlayer->GetVelocity(&vecThrow, NULL);
 	vecThrow += vForward * 350 + Vector(0, 0, 50);
-	CBaseGrenade *pGrenade = Fraggrenade_Create(vecSrc, vec3_angle, vecThrow, AngularImpulse(200, random->RandomInt(-600, 600), 0), pPlayer, GRENADE_TIMER, false);
+	CBaseGrenade *pGrenade = flashbanggrenade_Create(vecSrc, vec3_angle, vecThrow, AngularImpulse(200, random->RandomInt(-600, 600), 0), pPlayer, GRENADE_TIMER, false);
 
 	if (pGrenade)
 	{
@@ -501,7 +501,7 @@ void C_WeaponFlashBang::LobGrenade(CBasePlayer *pPlayer)
 // Purpose: 
 // Input  : *pPlayer - 
 //-----------------------------------------------------------------------------
-void C_WeaponFlashBang::RollGrenade(CBasePlayer *pPlayer)
+void CWeaponflashbang::RollGrenade(CBasePlayer *pPlayer)
 {
 #ifndef CLIENT_DLL
 	// BUGBUG: Hardcoded grenade width of 4 - better not change the model :)
@@ -532,7 +532,7 @@ void C_WeaponFlashBang::RollGrenade(CBasePlayer *pPlayer)
 	QAngle orientation(0, pPlayer->GetLocalAngles().y, -90);
 	// roll it
 	AngularImpulse rotSpeed(0, 0, 720);
-	CBaseGrenade *pGrenade = Fraggrenade_Create(vecSrc, orientation, vecThrow, rotSpeed, pPlayer, GRENADE_TIMER, false);
+	CBaseGrenade *pGrenade = flashbanggrenade_Create(vecSrc, orientation, vecThrow, rotSpeed, pPlayer, GRENADE_TIMER, false);
 
 	if (pGrenade)
 	{

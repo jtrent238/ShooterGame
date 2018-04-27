@@ -1,0 +1,13 @@
+# Wavefront MTL
+# Created by fragMOTION 1.3.1
+# http://www.fragmosoft.com
+
+newmtl beretta_d
+illum 2
+d 1
+ka 0.752941 0.752941 0.752941
+kd 0.752941 0.752941 0.752941
+ks 0 0 0
+ke 0 0 0
+ns 40
+map_kd C:\Users\Johan\Desktop\SteamWorks SDK\tools\ContentBuilder\content\tools_brainbread2_modtools\source files\Models\Weapons_OBJ\pistol_beretta\beretta_d.bmp

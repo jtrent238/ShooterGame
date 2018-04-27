@@ -1,8 +1,8 @@
 "GameInfo"
 {
 	game	"Shooter Game"
-	title	"HALF+LIFE'"
-	title2	"deathmatch mod"
+	title	"SHOOTER+GAME"
+	title2	"By: jtrent238"
 	type multiplayer_only
 	nomodels 0
 	nohimodel 1

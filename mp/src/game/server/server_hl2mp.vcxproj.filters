@@ -3313,9 +3313,6 @@
     <ClCompile Include="..\..\game\shared\hl2mp\weapon_crossbow.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\hl2mp\weapon_crowbar.cpp">
-      <Filter>Source Files\HL2MP\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\game\shared\hl2mp\weapon_frag.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
@@ -3555,6 +3552,15 @@
     </ClCompile>
     <ClCompile Include="toolframework_server.cpp">
       <Filter>Tools Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="hl2\weapon_glock18.cpp">
+      <Filter>Source Files\HL2MP\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="weapon_beretta.cpp">
+      <Filter>Source Files\HL2MP\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="weapon_glock17.cpp">
+      <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
